@@ -1,12 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
-  images: {
-    unoptimized: true
-  },
-  basePath: '',
-  assetPrefix: '',
-}
+  // Hapus semua konfigurasi GitHub Pages
+  // Vercel akan handle semuanya otomatis
+};
 
-module.exports = nextConfig
+export default nextConfig;

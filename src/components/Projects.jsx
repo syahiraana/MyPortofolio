@@ -33,8 +33,10 @@ export default function Projects() {
         '/images/projects/M7.png',
       ],
       tags: ['React', 'Node.js', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
-      projectType: 'demo',
-      demoUrl: 'https://drive.google.com/file/d/1zbJKvEg2xwBPtOtzf2gOz8yRzwbQP9wR/view'
+      projectType: 'maison',
+      demoUrl: 'https://drive.google.com/file/d/1zbJKvEg2xwBPtOtzf2gOz8yRzwbQP9wR/view',
+      userUrl: 'https://maison-elegante.vercel.app/',
+      adminUrl: 'https://maison-elegante.vercel.app/admin'
     },
     {
       title: 'Student Analysis Dashboard Web',
@@ -269,6 +271,43 @@ export default function Projects() {
                 <Figma size={16} />
                 <span className="text-sm">Figma</span>
               </a>
+            ) : 
+            /* Maison Elegante - special layout with demo and hosting links */
+            project.projectType === 'maison' ? (
+              <div className="flex flex-col gap-2 w-full">
+                <a 
+                  href={project.demoUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-orange-600 hover:text-orange-800 transition-colors hover:bg-orange-50 px-3 py-1 rounded-lg"
+                >
+                  <Pause size={16} />
+                  <span className="text-sm">Demo jika connect database</span>
+                </a>
+                <div className="flex items-center gap-4">
+                  <span className="text-slate-600 text-sm">hosting without Database : </span>
+                  <div className="flex gap-2">
+                    <a 
+                      href={project.userUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <Github size={16} />
+                      <span className="text-sm">User</span>
+                    </a>
+                    <a 
+                      href={project.adminUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <Github size={16} />
+                      <span className="text-sm">Admin</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             ) : 
             /* Demo projects - show demo button with pause icon */
             project.projectType === 'demo' ? (
