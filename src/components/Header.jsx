@@ -1,7 +1,7 @@
 // src/components/Header.js
 'use client'
 import { useState, useEffect } from 'react'
-import { Menu, X, Home, User, FolderOpen, Briefcase, Award, MessageSquare, Mail } from 'lucide-react'
+import { Menu, X, Home, User, FolderOpen, Briefcase, Code, MessageSquare, Mail } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,8 +15,8 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
       
-      // Detect active section
-      const sections = ['home', 'about', 'projects', 'OrganisationalExperience', 'contact']
+      // Detect active section - FIXED: Match the actual component IDs
+      const sections = ['home', 'about', 'projects', 'OrganisationalExperience', 'technical-skills', 'certifications', 'contact']
       const scrollPosition = window.scrollY + 100 // Offset for better detection
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -58,8 +58,11 @@ export default function Header() {
     { name: 'About', href: '#about', icon: User, id: 'about' },
     { name: 'Projects', href: '#projects', icon: FolderOpen, id: 'projects' },
     { name: 'Organizational', href: '#OrganisationalExperience', icon: Briefcase, id: 'OrganisationalExperience' },
+    { name: 'Technical Skills', href: '#technical-skills', icon: Code, id: 'technical-skills' },
+    { name: 'Certifications', href: '#certifications', icon: MessageSquare, id: 'certifications' },
     { name: 'Contact', href: '#contact', icon: Mail, id: 'contact' },
   ]
+
 
   const handleNavClick = (sectionId) => {
     setActiveSection(sectionId)
