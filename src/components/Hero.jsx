@@ -38,8 +38,8 @@ export default function Hero() {
   const quickStats = [
     { label: 'Data Science', sublabel: 'Concentrating', icon: Briefcase },
     { label: 'Information System', sublabel: 'Majoring', icon: Code },
-    { label: '4 Projects', sublabel: 'Total Projects', icon: FileText },
-    { label: '3.81 / 4.00', sublabel: 'GPA', icon: Settings }
+    { label: '8 Projects', sublabel: 'Total Projects', icon: FileText },
+    { label: '3.82 / 4.00', sublabel: 'GPA', icon: Settings }
   ]
 
   const socialLinks = [
@@ -151,18 +151,18 @@ export default function Hero() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 lg:mb-12">
-              
-              <button className="bg-slate-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                <Download size={18} className="sm:w-5 sm:h-5" />
-                Download Portofolio Canva Creatif.pdf
-              </button>
-              {/*               <button className="border-2 border-slate-300 text-slate-600 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:bg-slate-800 hover:text-white hover:border-slate-800 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base">
-                <Download size={18} className="sm:w-5 sm:h-5" />
-                Portofolio Creative 
-              </button> */}
-
-            </div>
+            <a
+              href="https://drive.google.com/file/d/1hRl5djHfK60t8mTCgo2B58Jl6fMRZQ-l/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 lg:mb-12">
+                <button className="bg-slate-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
+                  <Download size={18} className="sm:w-5 sm:h-5" />
+                  Transkrip Nilai
+                </button>
+              </div>
+            </a>
 
             {/* Quick Stats - Compact Pills Style */}
             <div className="mb-6 lg:mb-8">
