@@ -159,7 +159,7 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 lg:mb-12">
                 <button className="bg-slate-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
                   <Download size={18} className="sm:w-5 sm:h-5" />
-                  Transkrip Nilai
+                  Transkrip Nilai.pdf
                 </button>
               </div>
             </a>
