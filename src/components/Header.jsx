@@ -63,7 +63,6 @@ export default function Header() {
     { name: 'Contact', href: '#contact', icon: Mail, id: 'contact' },
   ]
 
-
   const handleNavClick = (sectionId) => {
     setActiveSection(sectionId)
     setIsMenuOpen(false)
@@ -74,8 +73,8 @@ export default function Header() {
       showHeader ? 'translate-y-0' : '-translate-y-full'
     } ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-xl' : 'bg-transparent'}`}>
       
-      {/* Container with consistent max-width and padding */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      {/* Container with same width as About section */}
+      <div className="container mx-auto px-6">
         <nav className="py-4">
           <div className="flex items-center justify-between">
             <div className="text-xl sm:text-2xl font-bold text-slate-700">

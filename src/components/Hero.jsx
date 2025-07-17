@@ -48,40 +48,15 @@ export default function Hero() {
     { icon: Github, href: 'https://github.com/syahiraana', label: 'GitHub' }
   ]
 
-  const floatingElements = [
-    { icon: Code, position: 'top-20 right-20', delay: '0s' },
-    { icon: FileText, position: 'top-40 right-80', delay: '1s' },
-    { icon: Settings, position: 'bottom-40 right-20', delay: '2s' },
-    { icon: Briefcase, position: 'bottom-20 left-20', delay: '0.5s' }
-  ]
-
   return (
     <section id="home" className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden pt-24 md:pt-28 lg:pt-32">
-      {/* Floating Background Elements */}
-      {floatingElements.map((element, index) => {
-        const Icon = element.icon
-        return (
-          <div
-            key={index}
-            className={`absolute ${element.position} opacity-20 animate-float hidden xl:block`}
-            style={{
-              animationDelay: element.delay,
-              transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`
-            }}
-          >
-            <div className="bg-slate-800 p-4 rounded-2xl shadow-lg">
-              <Icon size={24} className="text-white" />
-            </div>
-          </div>
-        )
-      })}
 
-      {/* Container with consistent max-width and padding */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+      {/* Container with same width as About section */}
+      <div className="container mx-auto px-6">
         <div className="min-h-[calc(100vh-96px)] md:min-h-[calc(100vh-112px)] lg:min-h-[calc(100vh-128px)] flex flex-col lg:flex-row items-center">
           
           {/* Mobile Layout: Image First - Moved Higher */}
-          <div className="w-full lg:hidden flex justify-center mb-8 pt-0">
+          <div className="w-full lg:hidden flex justify-center mb-6 pt-0 -mt-30">
             <div className="relative">
               <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-2xl border-8 border-white relative">
                 {profileImages.map((image, index) => (
@@ -96,17 +71,17 @@ export default function Hero() {
                 ))}
               </div>
               
-              {/* Mobile Floating Icons */}
+              {/* Mobile Floating Icons - Adjusted positioning */}
               <div className="absolute -top-3 -right-3 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float">
                 <Code size={16} className="text-white" />
               </div>
               <div className="absolute top-16 -right-6 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
                 <Code size={16} className="text-white" />
               </div>
-              <div className="absolute -bottom-3 -left-3 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
+              <div className="absolute -bottom-3 -left-1 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
                 <FileText size={16} className="text-white" />
               </div>
-              <div className="absolute bottom-16 -left-6 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
+              <div className="absolute bottom-16 -left-4 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
                 <Settings size={16} className="text-white" />
               </div>
             </div>
@@ -190,7 +165,7 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Profile Image (Desktop Only) - Made Smaller */}
-          <div className="hidden lg:flex w-2/5 xl:w-1/3 justify-center lg:justify-end relative lg:pl-8 xl:pl-12 2xl:pl-16 lg:-mt-16 xl:-mt-20">
+          <div className="hidden lg:flex w-2/5 xl:w-1/4 justify-center lg:justify-end relative lg:pl-8 xl:pl-12 2xl:pl-16 lg:-mt-16 xl:-mt-20">
             <div className="relative">
               <div 
                 className="w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden shadow-2xl border-8 border-white relative"
@@ -210,17 +185,17 @@ export default function Hero() {
                 ))}
               </div>
               
-              {/* Desktop Floating Icons */}
+              {/* Desktop Floating Icons - Adjusted positioning */}
               <div className="absolute -top-4 -right-4 bg-slate-800 p-3 rounded-full shadow-lg animate-float">
                 <Code size={20} className="text-white" />
               </div>
               <div className="absolute top-20 -right-8 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
                 <Code size={20} className="text-white" />
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
+              <div className="absolute -bottom-4 -left-2 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
                 <FileText size={20} className="text-white" />
               </div>
-              <div className="absolute bottom-20 -left-8 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
+              <div className="absolute bottom-20 -left-6 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
                 <Settings size={20} className="text-white" />
               </div>
             </div>
