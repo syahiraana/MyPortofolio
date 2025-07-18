@@ -1,4 +1,4 @@
-// src/components/Contact.js
+// src/components/Contact.jsx
 'use client'
 import { Mail, MapPin, MessageCircle } from 'lucide-react'
 

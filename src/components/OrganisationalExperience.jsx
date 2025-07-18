@@ -1,3 +1,5 @@
+// src/components/OrganisationalExperience.jsx
+
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -110,11 +112,11 @@ export default function OrganisationalExperience() {
     }
 
     return (
-      <div className="mt-4">
-        <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden border border-slate-700 shadow-lg">
+      <div className="mt-4 max-w-full overflow-hidden">
+        <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden border border-slate-700 shadow-lg max-w-full">
           {imageErrors[currentIndex] ? (
-            <div className="w-full h-full bg-slate-700 flex items-center justify-center">
-              <div className="text-center">
+            <div className="w-full h-full bg-slate-700 flex items-center justify-center max-w-full overflow-hidden">
+              <div className="text-center max-w-full overflow-hidden">
                 <div className="text-slate-400 text-sm mb-2">image {currentIndex + 1}</div>
                 <div className="text-slate-500 text-xs">Image not found</div>
                 <div className="text-slate-500 text-xs mt-1">{images[currentIndex]}</div>
@@ -124,26 +126,26 @@ export default function OrganisationalExperience() {
             <img
               src={images[currentIndex]}
               alt={`Certificate ${currentIndex + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover max-w-full"
               onError={() => handleImageError(currentIndex)}
             />
           )}
         </div>
-        <div className="flex justify-center mt-2 space-x-4">
+        <div className="flex justify-center mt-2 space-x-4 max-w-full overflow-hidden">
           <button
             onClick={prevSlide}
             aria-label="Previous certificate"
-            className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded transition"
+            className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded transition max-w-full overflow-hidden"
           >
             &#8249;
           </button>
-          <span className="text-slate-400 text-sm flex items-center">
+          <span className="text-slate-400 text-sm flex items-center max-w-full overflow-hidden">
             {currentIndex + 1} / {images.length}
           </span>
           <button
             onClick={nextSlide}
             aria-label="Next certificate"
-            className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded transition"
+            className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded transition max-w-full overflow-hidden"
           >
             &#8250;
           </button>
@@ -153,7 +155,7 @@ export default function OrganisationalExperience() {
   }
 
   return (
-    <section id="OrganisationalExperience" className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+    <section id="OrganisationalExperience" className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden max-w-full">
       <style jsx>{`
         @keyframes sparkle {
           0%, 100% { opacity: 0; transform: scale(0.8) rotate(0deg); }
@@ -225,6 +227,8 @@ export default function OrganisationalExperience() {
           );
           transform: translateX(-50%);
           z-index: 10;
+          max-width: 100%;
+          overflow: hidden;
         }
 
         .timeline-line::before {
@@ -255,21 +259,23 @@ export default function OrganisationalExperience() {
               transparent 100%
             );
             z-index: 10;
+            max-width: 100%;
+            overflow: hidden;
           }
         }
       `}</style>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-full overflow-hidden">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-16 max-w-full overflow-hidden">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 max-w-full overflow-hidden">
             Some of <span className="text-blue-400">Organizational Experience</span>
           </h2>
         </div>
 
         {/* Desktop Timeline */}
-        <div className="hidden md:block">
-          <div className="relative max-w-6xl mx-auto">
+        <div className="hidden md:block max-w-full overflow-hidden">
+          <div className="relative max-w-6xl mx-auto max-w-full overflow-hidden">
             {/* Center Timeline Line */}
             <div className="timeline-line">
               {/* Decorative sparkles */}
@@ -281,50 +287,50 @@ export default function OrganisationalExperience() {
             </div>
 
             {/* Timeline Items */}
-            <div className="space-y-24">
+            <div className="space-y-24 max-w-full overflow-hidden">
               {experiences.map((exp, index) => (
                 <div
                   key={exp.id}
                   data-id={exp.id}
-                  className="relative flex items-center"
+                  className="relative flex items-center max-w-full overflow-hidden"
                 >
                   {/* Timeline Dot */}
                   <div className="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full"
                        style={{animationDelay: `${index * 0.2}s`}}></div>
 
                   {/* Content Card */}
-                  <div className={`w-full flex ${exp.position === 'left' ? 'justify-start' : 'justify-end'}`}>
-                    <div className="w-5/12 mr-8 ml-8">
-                      <div className={`bg-slate-800/90 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-slate-700 hover:border-blue-400 transition-all duration-300 hover:transform hover:scale-105 opacity-0 ${
+                  <div className={`w-full flex max-w-full overflow-hidden ${exp.position === 'left' ? 'justify-start' : 'justify-end'}`}>
+                    <div className="w-5/12 mr-8 ml-8 max-w-full overflow-hidden">
+                      <div className={`bg-slate-800/90 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-slate-700 hover:border-blue-400 transition-all duration-300 hover:transform hover:scale-105 opacity-0 max-w-full overflow-hidden ${
                         visibleItems.has(exp.id.toString()) ? 'card-emerge' : ''
                       }`} style={{animationDelay: `${index * 0.3}s`}}>
                         
                         {/* Header with logo and info */}
-                        <div className="flex items-start space-x-4 mb-4">
-                          <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <div className="flex items-start space-x-4 mb-4 max-w-full overflow-hidden">
+                          <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg max-w-full overflow-hidden">
                             <img
                               src={exp.logo}
                               alt={`${exp.company} logo`}
-                              className="w-12 h-12 object-contain rounded"
+                              className="w-12 h-12 object-contain rounded max-w-full"
                               onError={(e) => {
                                 e.target.style.display = 'none'
                                 e.target.nextSibling.style.display = 'flex'
                               }}
                             />
-                            <div className="w-10 h-10 bg-blue-500 rounded flex items-center justify-center" style={{display: 'none'}}>
+                            <div className="w-10 h-10 bg-blue-500 rounded flex items-center justify-center max-w-full overflow-hidden" style={{display: 'none'}}>
                               <span className="text-white font-bold text-sm">
                                 {exp.company.charAt(0)}
                               </span>
                             </div>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="font-bold text-xl text-white mb-2 leading-tight">
+                          <div className="flex-1 min-w-0 max-w-full overflow-hidden">
+                            <h3 className="font-bold text-xl text-white mb-2 leading-tight max-w-full overflow-hidden">
                               {exp.title}
                             </h3>
-                            <p className="text-slate-300 text-base mb-2 leading-tight">
+                            <p className="text-slate-300 text-base mb-2 leading-tight max-w-full overflow-hidden">
                               {exp.company}
                             </p>
-                            <p className="text-blue-400 text-sm font-medium">
+                            <p className="text-blue-400 text-sm font-medium max-w-full overflow-hidden">
                               {exp.duration}
                             </p>
                           </div>
@@ -332,10 +338,10 @@ export default function OrganisationalExperience() {
 
                         {/* Job descriptions */}
                         {exp.jobDescriptions && (
-                          <div className="mb-4">
-                            <ul className="list-disc list-inside text-slate-300 text-sm space-y-1">
+                          <div className="mb-4 max-w-full overflow-hidden">
+                            <ul className="list-disc list-inside text-slate-300 text-sm space-y-1 max-w-full overflow-hidden">
                               {exp.jobDescriptions.map((desc, idx) => (
-                                <li key={idx}>{desc}</li>
+                                <li key={idx} className="max-w-full overflow-hidden">{desc}</li>
                               ))}
                             </ul>
                           </div>
@@ -355,53 +361,53 @@ export default function OrganisationalExperience() {
         </div>
 
         {/* Mobile Timeline */}
-        <div className="md:hidden">
-          <div className="relative">
+        <div className="md:hidden max-w-full overflow-hidden">
+          <div className="relative max-w-full overflow-hidden">
             {/* Mobile Timeline Line */}
             <div className="timeline-line-mobile">
               <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-300 rounded-full sparkle" style={{animationDelay: '0s'}}></div>
               <div className="absolute top-2/3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rounded-full sparkle" style={{animationDelay: '1.5s'}}></div>
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-8 max-w-full overflow-hidden">
               {experiences.map((exp, index) => (
-                <div key={exp.id} className="relative flex items-start space-x-6" data-id={exp.id}>
+                <div key={exp.id} className="relative flex items-start space-x-6 max-w-full overflow-hidden" data-id={exp.id}>
                   {/* Mobile Timeline Dot */}
                   <div className="timeline-dot w-4 h-4 rounded-full flex-shrink-0 mt-8"
                        style={{animationDelay: `${index * 0.2}s`}}></div>
                   
                   {/* Mobile Content Card */}
-                  <div className="flex-1 min-w-0">
-                    <div className={`bg-slate-800/90 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-slate-700 opacity-0 ${
+                  <div className="flex-1 min-w-0 max-w-full overflow-hidden">
+                    <div className={`bg-slate-800/90 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-slate-700 opacity-0 max-w-full overflow-hidden ${
                       visibleItems.has(exp.id.toString()) ? 'card-emerge' : ''
                     }`} style={{animationDelay: `${index * 0.3}s`}}>
                       
                       {/* Header with logo and info */}
-                      <div className="flex items-start space-x-4 mb-4">
-                        <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <div className="flex items-start space-x-4 mb-4 max-w-full overflow-hidden">
+                        <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg max-w-full overflow-hidden">
                           <img
                             src={exp.logo}
                             alt={`${exp.company} logo`}
-                            className="w-12 h-12 object-contain rounded"
+                            className="w-12 h-12 object-contain rounded max-w-full"
                             onError={(e) => {
                               e.target.style.display = 'none'
                               e.target.nextSibling.style.display = 'flex'
                             }}
                           />
-                          <div className="w-10 h-10 bg-blue-500 rounded flex items-center justify-center" style={{display: 'none'}}>
+                          <div className="w-10 h-10 bg-blue-500 rounded flex items-center justify-center max-w-full overflow-hidden" style={{display: 'none'}}>
                             <span className="text-white font-bold text-sm">
                               {exp.company.charAt(0)}
                             </span>
                           </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-xl text-white mb-2 leading-tight">
+                        <div className="flex-1 min-w-0 max-w-full overflow-hidden">
+                          <h3 className="font-bold text-xl text-white mb-2 leading-tight max-w-full overflow-hidden">
                             {exp.title}
                           </h3>
-                          <p className="text-slate-300 text-base mb-2 leading-tight">
+                          <p className="text-slate-300 text-base mb-2 leading-tight max-w-full overflow-hidden">
                             {exp.company}
                           </p>
-                          <p className="text-blue-400 text-sm font-medium">
+                          <p className="text-blue-400 text-sm font-medium max-w-full overflow-hidden">
                             {exp.duration}
                           </p>
                         </div>
@@ -409,10 +415,10 @@ export default function OrganisationalExperience() {
 
                       {/* Job descriptions */}
                       {exp.jobDescriptions && (
-                        <div className="mb-4">
-                          <ul className="list-disc list-inside text-slate-300 text-sm space-y-1">
+                        <div className="mb-4 max-w-full overflow-hidden">
+                          <ul className="list-disc list-inside text-slate-300 text-sm space-y-1 max-w-full overflow-hidden">
                             {exp.jobDescriptions.map((desc, idx) => (
-                              <li key={idx}>{desc}</li>
+                              <li key={idx} className="max-w-full overflow-hidden">{desc}</li>
                             ))}
                           </ul>
                         </div>

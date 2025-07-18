@@ -1,3 +1,5 @@
+// src/components/Projects.jsx
+
 'use client'
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Figma, MessageCircle, Pause } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
