@@ -6,11 +6,16 @@ import { Download, Github, Linkedin, Instagram, Settings, FileText, Briefcase, C
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [showCursor, setShowCursor] = useState(true)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const profileImages = [
     '/images/hero/profile3.png',
     '/images/hero/profile2.png'
   ]
+
+  const fullText = "Business Analyst | Data Scientist | Web Developer"
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -33,6 +38,46 @@ export default function Hero() {
     }, 2000)
 
     return () => clearInterval(interval)
+  }, [])
+
+  // Type & Delete Animation
+  useEffect(() => {
+    let timeout
+
+    if (!isDeleting) {
+      // TYPING PHASE - Very fast typing (25ms per character)
+      if (displayText.length < fullText.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(fullText.substring(0, displayText.length + 1))
+        }, 25) // Super fast typing
+      } else {
+        // Finished typing, wait 3 seconds then start deleting
+        timeout = setTimeout(() => {
+          setIsDeleting(true)
+        }, 3000)
+      }
+    } else {
+      // DELETING PHASE - Fast deleting (40ms per character)
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(fullText.substring(0, displayText.length - 1))
+        }, 40) // Fast deleting
+      } else {
+        // Finished deleting, start typing again
+        setIsDeleting(false)
+      }
+    }
+    
+    return () => clearTimeout(timeout)
+  }, [displayText, fullText, isDeleting])
+
+  // Cursor blinking effect
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev)
+    }, 500)
+
+    return () => clearInterval(cursorInterval)
   }, [])
 
   const quickStats = [
@@ -104,12 +149,17 @@ export default function Hero() {
                 <span className="inline-block animate-wave ml-2">👋</span>
               </h1>
               
-              {/* Simple Shiny Job Titles - All at Once */}
-              <div className="relative mb-2">
+              {/* Type & Delete Animation */}
+              <div className="relative h-16 sm:h-20 md:h-24 lg:h-16 xl:h-20 flex items-center justify-center lg:justify-start">
                 <h2 className="text-lg sm:text-xl md:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-relaxed">
-                  <span className="shiny-text-navy-grey">
-                    Business Analyst | Data Analyst | Data Scientist | Front-End Developer | Machine Learning Engineer
+                  <span className="typewriter-delete-text">
+                    {displayText}
                   </span>
+                  <span 
+                    className={`inline-block w-0.5 h-6 sm:h-7 md:h-8 lg:h-6 xl:h-7 bg-slate-700 ml-1 ${
+                      showCursor ? 'opacity-100' : 'opacity-0'
+                    } transition-opacity duration-100`}
+                  ></span>
                 </h2>
               </div>
             </div>
