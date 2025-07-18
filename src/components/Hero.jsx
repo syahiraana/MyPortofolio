@@ -1,7 +1,7 @@
 // src/components/Hero.js
 'use client'
 import { useState, useEffect } from 'react'
-import { Download, Github, Linkedin, Instagram, Settings, FileText, Briefcase, Code } from 'lucide-react'
+import { Download, Github, Linkedin, Instagram, Settings, FileText, Briefcase, Code, Sparkles, Star } from 'lucide-react'
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -30,7 +30,7 @@ export default function Hero() {
       setCurrentImageIndex((prevIndex) => 
         prevIndex === 0 ? 1 : 0
       )
-    }, 2000) // Change image every 2 seconds
+    }, 2000)
 
     return () => clearInterval(interval)
   }, [])
@@ -50,15 +50,24 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden pt-24 md:pt-28 lg:pt-32">
+      
+      {/* Enhanced Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-slate-200/20 to-slate-300/20 rounded-full animate-morph-1"></div>
+        <div className="absolute bottom-40 right-20 w-24 h-24 bg-gradient-to-br from-slate-300/15 to-slate-400/15 rounded-full animate-morph-2"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-slate-500/40 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-40 left-20 w-1.5 h-1.5 bg-slate-400/35 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 right-10 w-2 h-2 bg-slate-500/30 rounded-full animate-float" style={{animationDelay: '0.5s'}}></div>
+      </div>
 
       {/* Container with same width as About section */}
       <div className="container mx-auto px-6">
         <div className="min-h-[calc(100vh-96px)] md:min-h-[calc(100vh-112px)] lg:min-h-[calc(100vh-128px)] flex flex-col lg:flex-row items-center">
           
-          {/* Mobile Layout: Image First - Moved Higher */}
+          {/* Mobile Layout: Image First - BIGGER SIZE */}
           <div className="w-full lg:hidden flex justify-center mb-6 pt-0 -mt-30">
             <div className="relative">
-              <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-2xl border-8 border-white relative">
+              <div className="w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white relative">
                 {profileImages.map((image, index) => (
                   <img
                     key={index}
@@ -71,41 +80,51 @@ export default function Hero() {
                 ))}
               </div>
               
-              {/* Mobile Floating Icons - Adjusted positioning */}
-              <div className="absolute -top-3 -right-3 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float">
-                <Code size={16} className="text-white" />
+              {/* Mobile Floating Icons - Enhanced & Bigger */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-br from-slate-700 to-slate-900 p-3 rounded-full shadow-lg animate-float">
+                <Code size={20} className="text-white" />
               </div>
-              <div className="absolute top-16 -right-6 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
-                <Code size={16} className="text-white" />
+              <div className="absolute top-20 -right-8 bg-gradient-to-br from-slate-800 to-slate-900 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
+                <Sparkles size={20} className="text-white" />
               </div>
-              <div className="absolute -bottom-3 -left-1 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
-                <FileText size={16} className="text-white" />
+              <div className="absolute -bottom-4 -left-2 bg-gradient-to-br from-slate-700 to-slate-900 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
+                <FileText size={20} className="text-white" />
               </div>
-              <div className="absolute bottom-16 -left-4 bg-slate-800 p-2.5 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
-                <Settings size={16} className="text-white" />
+              <div className="absolute bottom-20 -left-8 bg-gradient-to-br from-slate-800 to-slate-900 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
+                <Settings size={20} className="text-white" />
               </div>
             </div>
           </div>
 
-          {/* Left Content - Text Section - Made Wider */}
-          <div className="w-full lg:w-3/5 xl:w-2/3 lg:pr-8 xl:pr-12 2xl:pr-16 text-center lg:text-left relative z-10">
+          {/* Left Content - Text Section - Adjusted for bigger image */}
+          <div className="w-full lg:w-1/2 xl:w-3/5 lg:pr-6 xl:pr-8 2xl:pr-12 text-center lg:text-left relative z-10">
             <div className="mb-6 lg:mb-8">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-slate-800 mb-2">
-                Hi, I'm Syahira  
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-slate-800 mb-4">
+                Hi, I'm <span className="gradient-text-hero-navy">Syahira</span>
                 <span className="inline-block animate-wave ml-2">👋</span>
               </h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-xl xl:text-2xl text-slate-600 font-medium">
-                Business Analyst | Data Analyst | Data Scientist | Front-End Developer | Machine Learning Engineer
-              </h2>
+              
+              {/* Simple Shiny Job Titles - All at Once */}
+              <div className="relative mb-2">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-lg xl:text-xl 2xl:text-2xl font-medium leading-relaxed">
+                  <span className="shiny-text-navy-grey">
+                    Business Analyst | Data Analyst | Data Scientist | Front-End Developer | Machine Learning Engineer
+                  </span>
+                </h2>
+              </div>
             </div>
 
-            <p className="text-base sm:text-lg lg:text-lg xl:text-xl text-slate-600 mb-6 lg:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              I build modern, responsive web apps with clean UI and smooth UX blending design and code to create experiences that feel intuitive, fast, and delightful to use.
+            <p className="text-base sm:text-lg lg:text-base xl:text-lg 2xl:text-xl text-slate-600 mb-6 lg:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              I build modern, responsive web apps with clean UI and smooth UX blending design and code to create experiences that feel 
+              <span className="font-semibold text-slate-700"> intuitive, fast, and delightful</span> to use.
             </p>
 
-            {/* Social Links */}
+            {/* Social Links - Enhanced */}
             <div className="mb-6 lg:mb-8">
-              <p className="text-slate-600 mb-4 text-sm sm:text-base">Follow me on:</p>
+              <p className="text-slate-600 mb-4 text-sm sm:text-base flex items-center justify-center lg:justify-start gap-2">
+                <Star size={16} className="text-slate-500" />
+                Follow me on:
+              </p>
               <div className="flex justify-center lg:justify-start gap-3 sm:gap-4">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon
@@ -115,7 +134,7 @@ export default function Hero() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-slate-800 text-white p-2.5 sm:p-3 rounded-full hover:bg-slate-700 transition-all duration-300 hover:scale-110 shadow-lg"
+                      className="bg-gradient-to-br from-slate-700 to-slate-900 text-white p-2.5 sm:p-3 rounded-full hover:from-slate-600 hover:to-slate-800 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
                       aria-label={social.label}
                     >
                       <Icon size={18} className="sm:w-5 sm:h-5" />
@@ -125,24 +144,25 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons - Enhanced */}
             <a
               href="https://drive.google.com/file/d/1hRl5djHfK60t8mTCgo2B58Jl6fMRZQ-l/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 lg:mb-12">
-                <button className="bg-slate-800 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
+                <button className="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg hover:from-slate-700 hover:to-slate-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base hover:scale-105">
                   <Download size={18} className="sm:w-5 sm:h-5" />
                   Transkrip Nilai
                 </button>
               </div>
             </a>
 
-            {/* Quick Stats - Compact Pills Style */}
+            {/* Quick Stats - Enhanced Pills Style */}
             <div className="mb-6 lg:mb-8">
               <p className="text-slate-600 mb-4 flex items-center justify-center lg:justify-start gap-2 text-sm sm:text-base">
-                <span className="text-base sm:text-lg"></span> Quick Stats:
+                <Sparkles size={16} className="text-slate-500" />
+                Quick Stats:
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
                 {quickStats.map((stat, index) => {
@@ -150,7 +170,7 @@ export default function Hero() {
                   return (
                     <div
                       key={index}
-                      className="bg-slate-800 text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-full hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2 border border-slate-700"
+                      className="bg-gradient-to-br from-slate-800 to-slate-900 text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-full hover:scale-105 hover:from-slate-700 hover:to-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2 border border-slate-700/50"
                     >
                       <Icon size={14} className="sm:w-4 sm:h-4 opacity-80 flex-shrink-0" />
                       <div className="flex flex-col">
@@ -164,11 +184,11 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Content - Profile Image (Desktop Only) - Made Smaller */}
-          <div className="hidden lg:flex w-2/5 xl:w-1/4 justify-center lg:justify-end relative lg:pl-8 xl:pl-12 2xl:pl-16 lg:-mt-16 xl:-mt-20">
+          {/* Right Content - BIGGER Profile Image (Desktop Only) */}
+          <div className="hidden lg:flex w-1/2 xl:w-2/5 justify-center lg:justify-end relative lg:pl-4 xl:pl-6 2xl:pl-8 lg:-mt-12 xl:-mt-16">
             <div className="relative">
               <div 
-                className="w-64 h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden shadow-2xl border-8 border-white relative"
+                className="w-96 h-96 lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[500px] rounded-full overflow-hidden shadow-2xl border-8 border-white relative"
                 style={{
                   transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`
                 }}
@@ -185,18 +205,18 @@ export default function Hero() {
                 ))}
               </div>
               
-              {/* Desktop Floating Icons - Adjusted positioning */}
-              <div className="absolute -top-4 -right-4 bg-slate-800 p-3 rounded-full shadow-lg animate-float">
-                <Code size={20} className="text-white" />
+              {/* Desktop Floating Icons - Enhanced & Bigger */}
+              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-slate-700 to-slate-900 p-4 rounded-full shadow-lg animate-float">
+                <Code size={24} className="text-white" />
               </div>
-              <div className="absolute top-20 -right-8 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
-                <Code size={20} className="text-white" />
+              <div className="absolute top-24 -right-10 bg-gradient-to-br from-slate-800 to-slate-900 p-4 rounded-full shadow-lg animate-float" style={{animationDelay: '0.5s'}}>
+                <Sparkles size={24} className="text-white" />
               </div>
-              <div className="absolute -bottom-4 -left-2 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
-                <FileText size={20} className="text-white" />
+              <div className="absolute -bottom-6 -left-4 bg-gradient-to-br from-slate-700 to-slate-900 p-4 rounded-full shadow-lg animate-float" style={{animationDelay: '1s'}}>
+                <FileText size={24} className="text-white" />
               </div>
-              <div className="absolute bottom-20 -left-6 bg-slate-800 p-3 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
-                <Settings size={20} className="text-white" />
+              <div className="absolute bottom-24 -left-8 bg-gradient-to-br from-slate-800 to-slate-900 p-4 rounded-full shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
+                <Settings size={24} className="text-white" />
               </div>
             </div>
           </div>
@@ -222,6 +242,14 @@ export default function Hero() {
         
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-morph-1 {
+          animation: morph-1 8s ease-in-out infinite;
+        }
+
+        .animate-morph-2 {
+          animation: morph-2 10s ease-in-out infinite;
         }
       `}</style>
     </section>

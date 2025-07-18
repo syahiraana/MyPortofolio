@@ -111,10 +111,10 @@ export default function About() {
                 {techStack.map((tech, index) => (
                   <div 
                     key={index} 
-                    className={`bg-slate-800 border border-slate-700 rounded-xl px-3 py-3 hover:border-slate-600 hover:bg-slate-700 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                    className={`tech-card-mobile group relative bg-slate-800/50 border border-slate-700/50 rounded-xl px-3 py-3 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                     style={{ transitionDelay: `${1000 + index * 100}ms` }}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 relative z-10">
                       <Image 
                         src={tech.image} 
                         alt={tech.name} 
@@ -170,10 +170,10 @@ export default function About() {
                 {techStack.map((tech, index) => (
                   <div 
                     key={index} 
-                    className={`bg-slate-800 border border-slate-700 rounded-xl px-3 py-3 hover:border-slate-600 hover:bg-slate-700 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
+                    className={`tech-card-desktop group relative bg-slate-800/50 border border-slate-700/50 rounded-xl px-3 py-3 transition-all duration-300 transform hover:scale-105 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
                     style={{ transitionDelay: `${1100 + index * 100}ms` }}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 relative z-10">
                       <Image 
                         src={tech.image} 
                         alt={tech.name} 
@@ -207,6 +207,79 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* Custom Styles */}
+      <style jsx>{`
+        .tech-card-desktop {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .tech-card-desktop::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          padding: 1px;
+          background: linear-gradient(
+            135deg,
+            transparent,
+            rgba(148, 163, 184, 0.3),
+            rgba(203, 213, 225, 0.5),
+            rgba(148, 163, 184, 0.3),
+            transparent
+          );
+          border-radius: inherit;
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask-composite: xor;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .tech-card-desktop:hover::before {
+          opacity: 1;
+        }
+
+        .tech-card-desktop:hover {
+          background: rgba(30, 41, 59, 0.8);
+          border-color: rgba(148, 163, 184, 0.3);
+          box-shadow: 0 0 20px rgba(148, 163, 184, 0.2);
+        }
+
+        .tech-card-mobile {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .tech-card-mobile::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          padding: 1px;
+          background: linear-gradient(
+            135deg,
+            transparent,
+            rgba(148, 163, 184, 0.3),
+            rgba(203, 213, 225, 0.5),
+            rgba(148, 163, 184, 0.3),
+            transparent
+          );
+          border-radius: inherit;
+          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          mask-composite: xor;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .tech-card-mobile:hover::before {
+          opacity: 1;
+        }
+
+        .tech-card-mobile:hover {
+          background: rgba(30, 41, 59, 0.8);
+          border-color: rgba(148, 163, 184, 0.3);
+          box-shadow: 0 0 20px rgba(148, 163, 184, 0.2);
+        }
+      `}</style>
     </section>
   )
 }
