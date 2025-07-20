@@ -1,5 +1,3 @@
-// src/components/TechnicalSkills.jsx
-
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { Code2, Database, Palette, BarChart3, Brain, Globe, Zap, BookOpen, Target } from 'lucide-react'
@@ -231,54 +229,54 @@ export default function TechnicalSkills() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="technical-skills" className="py-20 bg-gray-50 relative overflow-hidden min-h-screen max-w-full">
+    <section ref={sectionRef} id="technical-skills" className="py-20 bg-gray-50 relative overflow-hidden min-h-screen">
       {/* Background Decorations */}
-      <div className="absolute inset-0 opacity-5 max-w-full overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-slate-600 to-blue-600 rounded-full blur-3xl max-w-full overflow-hidden"></div>
-        <div className="absolute top-40 right-20 w-40 h-40 bg-gradient-to-r from-blue-600 to-slate-800 rounded-full blur-3xl max-w-full overflow-hidden"></div>
-        <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-gradient-to-r from-slate-700 to-blue-700 rounded-full blur-3xl max-w-full overflow-hidden"></div>
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-slate-600 to-blue-600 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-40 h-40 bg-gradient-to-r from-blue-600 to-slate-800 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-gradient-to-r from-slate-700 to-blue-700 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 max-w-full overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className={`text-center mb-16 transform transition-all duration-1000 max-w-full overflow-hidden ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="flex items-center justify-center gap-3 mb-4 max-w-full overflow-hidden">
-            <div className="p-2 bg-gradient-to-r from-slate-600 to-blue-600 rounded-full max-w-full overflow-hidden">
+        <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="p-2 bg-gradient-to-r from-slate-600 to-blue-600 rounded-full">
               <Code2 className="text-white" size={24} />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-600 to-blue-600 bg-clip-text text-transparent max-w-full overflow-hidden">
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-600 to-blue-600 bg-clip-text text-transparent">
               Technical Skills
             </h2>
-            <div className="p-2 bg-gradient-to-r from-blue-600 to-slate-800 rounded-full max-w-full overflow-hidden">
+            <div className="p-2 bg-gradient-to-r from-blue-600 to-slate-800 rounded-full">
               <Brain className="text-white" size={24} />
             </div>
           </div>
-          <div className="w-20 h-1 bg-gradient-to-r from-slate-600 to-blue-600 mx-auto mb-6 rounded-full max-w-full overflow-hidden"></div>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto max-w-full overflow-hidden">
+          <div className="w-20 h-1 bg-gradient-to-r from-slate-600 to-blue-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Skills developed through academic coursework and applied in real-world projects
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-full overflow-hidden">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {skillCategories.map((category, categoryIndex) => {
             const CategoryIcon = category.icon
             return (
               <div 
                 key={categoryIndex} 
-                className={`bg-gradient-to-br ${category.bgGradient} rounded-2xl p-6 shadow-lg hover:shadow-xl transform transition-all duration-1000 border border-slate-200 hover:scale-105 max-w-full overflow-hidden ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                className={`bg-gradient-to-br ${category.bgGradient} rounded-2xl p-6 shadow-lg hover:shadow-xl transform transition-all duration-1000 border border-slate-200 hover:scale-105 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                 style={{ transitionDelay: `${categoryIndex * 150}ms` }}
               >
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-6 max-w-full overflow-hidden">
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} shadow-lg max-w-full overflow-hidden`}>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.gradient} shadow-lg`}>
                     <CategoryIcon size={24} className="text-white" />
                   </div>
-                  <div className="max-w-full overflow-hidden">
-                    <h3 className="text-lg font-bold text-slate-800 max-w-full overflow-hidden">
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-800">
                       {category.title}
                     </h3>
-                    <div className="flex items-center gap-1 mt-1 max-w-full overflow-hidden">
+                    <div className="flex items-center gap-1 mt-1">
                       <BookOpen size={12} className="text-slate-500" />
                       <span className="text-xs text-slate-500">Academic & Applied</span>
                     </div>
@@ -286,64 +284,64 @@ export default function TechnicalSkills() {
                 </div>
 
                 {/* Skills List */}
-                <div className="space-y-4 max-w-full overflow-hidden">
+                <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div 
                       key={skillIndex}
-                      className="group bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 hover:border-blue-200 cursor-pointer max-w-full overflow-hidden"
+                      className="group bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 hover:border-blue-200 cursor-pointer"
                       onMouseEnter={() => setHoveredSkill(`${categoryIndex}-${skillIndex}`)}
                       onMouseLeave={() => setHoveredSkill(null)}
                     >
-                      <div className="flex items-start gap-3 max-w-full overflow-hidden">
+                      <div className="flex items-start gap-3">
                         {/* Skill Icon */}
-                        <div className="relative max-w-full overflow-hidden">
-                          <div className={`w-10 h-10 ${skill.iconColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 max-w-full overflow-hidden`}>
+                        <div className="relative">
+                          <div className={`w-10 h-10 ${skill.iconColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                             <span className="text-white text-xs font-bold">
                               {skill.name.substring(0, 2).toUpperCase()}
                             </span>
                           </div>
                           {hoveredSkill === `${categoryIndex}-${skillIndex}` && (
-                            <div className="absolute -top-1 -right-1 max-w-full overflow-hidden">
+                            <div className="absolute -top-1 -right-1">
                               <Zap size={12} className="text-blue-500 animate-pulse" />
                             </div>
                           )}
                         </div>
 
                         {/* Skill Info */}
-                        <div className="flex-1 min-w-0 max-w-full overflow-hidden">
-                          <div className="flex items-center justify-between mb-2 max-w-full overflow-hidden">
-                            <h4 className="font-semibold text-slate-800 text-sm group-hover:text-blue-600 transition-colors max-w-full overflow-hidden">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-semibold text-slate-800 text-sm group-hover:text-blue-600 transition-colors">
                               {skill.name}
                             </h4>
-                            <span className="text-xs text-slate-500 font-medium bg-slate-100 px-2 py-1 rounded-full max-w-full overflow-hidden">
+                            <span className="text-xs text-slate-500 font-medium bg-slate-100 px-2 py-1 rounded-full">
                               {skill.specialty}
                             </span>
                           </div>
 
                           {/* Academic Source */}
-                          <div className="mb-2 max-w-full overflow-hidden">
-                            <div className="flex items-center gap-1 mb-1 max-w-full overflow-hidden">
+                          <div className="mb-2">
+                            <div className="flex items-center gap-1 mb-1">
                               <BookOpen size={12} className="text-blue-500" />
                               <span className="text-xs font-medium text-blue-600">Learned from:</span>
                             </div>
-                            <p className="text-xs text-slate-600 leading-relaxed max-w-full overflow-hidden">
+                            <p className="text-xs text-slate-600 leading-relaxed">
                               {skill.subjects}
                             </p>
                           </div>
 
                           {/* Project Applications */}
-                          <div className="mb-3 max-w-full overflow-hidden">
-                            <div className="flex items-center gap-1 mb-1 max-w-full overflow-hidden">
+                          <div className="mb-3">
+                            <div className="flex items-center gap-1 mb-1">
                               <Target size={12} className="text-slate-500" />
                               <span className="text-xs font-medium text-slate-700">Applied in:</span>
                             </div>
-                            <p className="text-xs text-slate-600 leading-relaxed max-w-full overflow-hidden">
+                            <p className="text-xs text-slate-600 leading-relaxed">
                               {skill.projects}
                             </p>
                           </div>
 
                           {/* Animated Progress Indicator */}
-                          <div className="h-1 bg-slate-200 rounded-full overflow-hidden max-w-full">
+                          <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
                             <div 
                               className={`h-full bg-gradient-to-r ${category.gradient} rounded-full transition-all duration-1000 ease-out`}
                               style={{ 
@@ -359,10 +357,10 @@ export default function TechnicalSkills() {
                 </div>
 
                 {/* Category Footer */}
-                <div className="mt-6 pt-4 border-t border-slate-200 max-w-full overflow-hidden">
-                  <div className="flex items-center justify-between text-xs text-slate-500 max-w-full overflow-hidden">
+                <div className="mt-6 pt-4 border-t border-slate-200">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
                     <span>{category.skills.length} Skills</span>
-                    <div className="flex items-center gap-1 max-w-full overflow-hidden">
+                    <div className="flex items-center gap-1">
                       <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.gradient}`}></div>
                       <span>Academic Foundation</span>
                     </div>

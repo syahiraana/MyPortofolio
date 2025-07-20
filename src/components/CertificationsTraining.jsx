@@ -1,5 +1,3 @@
-// src/components/CertificationsTraining.jsx
-
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { Award, Calendar, Building2, ExternalLink } from 'lucide-react'

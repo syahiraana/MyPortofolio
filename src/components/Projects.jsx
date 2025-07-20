@@ -1,31 +1,8 @@
-// src/components/Projects.jsx
-
 'use client'
 import { ExternalLink, Github, ChevronLeft, ChevronRight, Figma, MessageCircle, Pause } from 'lucide-react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Projects() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  // Intersection Observer for animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   const projects = [
     {
       title: 'Skill Gap Analysis',
@@ -83,7 +60,7 @@ export default function Projects() {
         '/images/projects/pf.png'
       ],
       tags: ['React', 'Tailwind CSS', 'Framer Motion'],
-      projectType: 'portfolio'
+      projectType: 'portfolio' // Changed from 'contact' to 'portfolio'
     },
     {
       title: 'Flight Peformance & Pessanger Analysis Dashboard',
@@ -136,6 +113,7 @@ export default function Projects() {
     }
   ]
 
+  // ... ImageCarousel component remains the same ...
   const ImageCarousel = ({ images, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [touchStart, setTouchStart] = useState(0)
@@ -183,7 +161,7 @@ export default function Projects() {
     }
 
     return (
-      <div className="relative h-64 md:h-72 bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden rounded-t-xl">
+      <div className="relative h-64 md:h-72 bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden rounded-t-xl">
         <div 
           className="relative w-full h-full"
           onTouchStart={handleTouchStart}
@@ -212,13 +190,13 @@ export default function Projects() {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 z-20"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 z-20"
             >
               <ChevronLeft size={16} className="text-slate-700" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 z-20"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110 z-20"
             >
               <ChevronRight size={16} className="text-slate-700" />
             </button>
@@ -233,7 +211,7 @@ export default function Projects() {
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-200 ${
                   index === currentIndex 
-                    ? 'bg-slate-700 scale-125' 
+                    ? 'bg-blue-600 scale-125' 
                     : 'bg-white/60 hover:bg-white/80'
                 }`}
               />
@@ -253,19 +231,11 @@ export default function Projects() {
     }
 
     return (
-      <div 
-        className={`project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:transform hover:scale-105 ${
-          isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'
-        }`}
-        style={{ 
-          animationDelay: `${index * 150}ms`,
-          animationFillMode: 'forwards'
-        }}
-      >
+      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:scale-105">
         <div className="relative">
           <ImageCarousel images={project.images} title={project.title} />
           {project.status === 'ongoing' && (
-            <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg z-30 animate-pulse">
+            <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg z-30">
               🚧 Coming Soon
             </div>
           )}
@@ -275,7 +245,7 @@ export default function Projects() {
             {project.title}
           </h3>
           {project.client && (
-            <b><p className="text-slate-700 mb-4 text-sm leading-relaxed">
+            <b><p className="text-blue-900 mb-4 text-sm leading-relaxed ">
               {project.client}
             </p></b>
           )}
@@ -284,7 +254,7 @@ export default function Projects() {
           </p>
           <div className="flex flex-wrap gap-2 mb-4">
             {project.tags.map((tag, tagIndex) => (
-              <span key={tagIndex} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium hover:bg-slate-200 transition-colors duration-200">
+              <span key={tagIndex} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-medium">
                 {tag}
               </span>
             ))}
@@ -296,7 +266,7 @@ export default function Projects() {
                 href={project.figmaUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-purple-600 hover:text-purple-800 transition-colors hover:bg-purple-50 px-3 py-1 rounded-lg"
+                className="flex items-center gap-2 text-purple-600 hover:text-purple-800 transition-colors"
               >
                 <Figma size={16} />
                 <span className="text-sm">Figma</span>
@@ -321,7 +291,7 @@ export default function Projects() {
                       href={project.userUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors hover:bg-blue-50 px-2 py-1 rounded"
+                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors"
                     >
                       <Github size={16} />
                       <span className="text-sm">User</span>
@@ -330,7 +300,7 @@ export default function Projects() {
                       href={project.adminUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors hover:bg-blue-50 px-2 py-1 rounded"
+                      className="flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors"
                     >
                       <Github size={16} />
                       <span className="text-sm">Admin</span>
@@ -357,7 +327,7 @@ export default function Projects() {
                 href={project.figmaUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-purple-600 hover:text-purple-800 transition-colors hover:bg-purple-50 px-3 py-1 rounded-lg"
+                className="flex items-center gap-2 text-purple-600 hover:text-purple-800 transition-colors"
               >
                 <Figma size={16} />
                 <span className="text-sm">View Design</span>
@@ -386,7 +356,7 @@ export default function Projects() {
                   href={project.liveUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors hover:bg-blue-50 px-3 py-1 rounded-lg"
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   <ExternalLink size={16} />
                   <span className="text-sm">Live Demo</span>
@@ -395,7 +365,7 @@ export default function Projects() {
                   href={project.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors hover:bg-slate-50 px-3 py-1 rounded-lg"
+                  className="flex items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors"
                 >
                   <Github size={16} />
                   <span className="text-sm">Code</span>
@@ -409,34 +379,18 @@ export default function Projects() {
   }
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 bg-white relative overflow-hidden">
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-br from-slate-100/30 to-slate-200/30 rounded-full animate-float-slow"></div>
-        <div className="absolute bottom-40 right-20 w-32 h-32 bg-gradient-to-br from-slate-200/20 to-slate-300/20 rounded-full animate-float-slow" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-slate-100/25 to-slate-200/25 rounded-full animate-float-slow" style={{animationDelay: '4s'}}></div>
-        <div className="absolute top-1/3 right-1/3 w-16 h-16 bg-gradient-to-br from-slate-200/30 to-slate-300/30 rounded-full animate-float-slow" style={{animationDelay: '1s'}}></div>
-        
-        {/* Subtle Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.3) 1px, transparent 0)`,
-          backgroundSize: '20px 20px'
-        }}></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className={`text-center mb-16 transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="my-text">My</span>{' '}
-            <span className="projects-text">Projects</span>
+    <section id="projects" className="py-20 bg-slate-50">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-700 to-blue-500 bg-clip-text text-transparent">
+            My Projects
           </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-blue-500 mx-auto mb-8"></div>
+          <p className="text-slate-700 text-lg max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills and creativity
           </p>
         </div>
+
 
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -445,47 +399,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-
-      {/* Custom Styles */}
-      <style jsx>{`
-        @keyframes float-slow {
-          0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
-          }
-          50% { 
-            transform: translateY(-30px) rotate(180deg); 
-          }
-        }
-        
-        .animate-float-slow {
-          animation: float-slow 8s ease-in-out infinite;
-        }
-
-        .project-card {
-          position: relative;
-          overflow: hidden;
-        }
-
-        .project-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
-          );
-          transition: left 0.5s;
-        }
-
-        .project-card:hover::before {
-          left: 100%;
-        }
-      `}</style>
     </section>
   )
 }
