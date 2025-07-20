@@ -82,14 +82,16 @@ export default function About() {
             </div>
           </div>
 
-          {/* Mobile Content - FAST SEQUENCE */}
+          {/* Mobile Content - FAST SEQUENCE with SHINY TEXT */}
           <div className="px-4">
             <div className={`transform transition-all duration-500 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-white text-center">
                 SYAHIRA ANA PISCOULY
               </h1>
-              <p className="text-base sm:text-lg text-slate-300 mb-6 text-center">
-                Final-year Information Systems Student at President University 
+              <p className="text-base sm:text-lg mb-6 text-center">
+                <span className="shiny-text-navy-grey">
+                  Final-year Information Systems Student at President University
+                </span>
               </p>
             </div>
             
@@ -139,7 +141,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Desktop Layout: Keep original faster animation */}
+        {/* Desktop Layout: Keep original faster animation with SHINY TEXT */}
         <div className="hidden md:grid md:grid-cols-5 gap-8 lg:gap-12 items-start">
           {/* Left Content */}
           <div className="md:col-span-3">
@@ -147,8 +149,10 @@ export default function About() {
               <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 text-white">
                 SYAHIRA ANA PISCOULY
               </h1>
-              <p className="text-lg lg:text-xl text-slate-300 mb-8">
-                Final-year Information Systems Student at President University 
+              <p className="text-lg lg:text-xl mb-8">
+                <span className="shiny-text-navy-grey">
+                  Final-year Information Systems Student at President University
+                </span>
               </p>
             </div>
             
@@ -216,7 +220,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* Custom Styles */}
+      {/* Custom Styles - Updated dengan SHINY TEXT EFFECT */}
       <style jsx>{`
         .tech-card-desktop,
         .tech-card-mobile {
@@ -255,6 +259,32 @@ export default function About() {
           background: rgba(30, 41, 59, 0.8);
           border-color: rgba(148, 163, 184, 0.3);
           box-shadow: 0 0 20px rgba(148, 163, 184, 0.2);
+        }
+
+        /* SHINY TEXT EFFECT untuk subtitle */
+        .shiny-text-navy-grey {
+          background: linear-gradient(
+            120deg,
+            rgba(148, 163, 184, 0.8) 0%,
+            rgba(203, 213, 225, 1) 25%,
+            rgba(241, 245, 249, 1) 50%,
+            rgba(203, 213, 225, 1) 75%,
+            rgba(148, 163, 184, 0.8) 100%
+          );
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+          0% {
+            background-position: 200% center;
+          }
+          100% {
+            background-position: -200% center;
+          }
         }
       `}</style>
     </section>
